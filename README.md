@@ -75,6 +75,32 @@ Para processar todos os arquivos PHP de um diretório:
 python ingest_recursive.py /caminho/do/seu/projeto/php
 ```
 
+#### Parâmetros Disponíveis
+
+O script `ingest_recursive.py` aceita os seguintes parâmetros opcionais:
+
+| Parâmetro | Forma Curta | Padrão | Descrição |
+|-----------|-------------|--------|-----------|
+| `--path` | `-p` | `/home/leandro/Development/Eloco-Api` | Diretório base onde os arquivos serão procurados |
+| `--model` | `-m` | `all-MiniLM-L6-v2` | Nome do modelo SentenceTransformer a ser usado para gerar embeddings |
+| `--pattern` | `-t` | `*.php` | Padrão de arquivo usado pelo glob (ex: `*.js`, `*.py`) |
+
+#### Exemplos de Uso
+
+```bash
+# Usar diretório customizado
+python ingest_recursive.py --path /meu/projeto/php
+
+# Usar modelo customizado
+python ingest_recursive.py -m "paraphrase-MiniLM-L6-v2" -p /meu/projeto
+
+# Processar arquivos JavaScript em vez de PHP
+python ingest_recursive.py --path /meu/projeto --pattern "*.js"
+
+# Combinar todos os parâmetros
+python ingest_recursive.py -p /meu/projeto -m "paraphrase-multilingual-MiniLM-L12-v2" -t "*.php"
+```
+
 ### Ingerir Um Arquivo Específico
 
 ```bash
@@ -122,7 +148,7 @@ O Cursor possui suporte nativo para MCP - apenas configure o servidor e comece a
 #### JetBrains IDEs (PhpStorm, WebStorm)
 Configure o plugin MCP nas preferências e aponte para o servidor local.
 
-## �🛠️ Configuração
+## 🛠️ Configuração
 
 As configurações do projeto podem ser ajustadas editando os arquivos Python conforme necessário.
 
